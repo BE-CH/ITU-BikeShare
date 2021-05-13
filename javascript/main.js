@@ -1,4 +1,4 @@
-let allbikes = {
+let bikeTypes = {
     citybike: {
         title: "Citybike",
         description: "Avenue Broadway er en smart citybike med et gennemført flot design. Cyklen har 7 indvendige Shimano gear og rullebremser,  samt hydroformede aluminiumsrør gør denne citybike perfekt til kørsel på jævnt terran.",
@@ -32,22 +32,30 @@ let allLocations = [
     {
         name: "FriBikeShop Østerbro",
         availableBikes: 10,
-        coord: {lat: 55.71, lng: 12.57}
+        coord: {lat: 55.7072734, lng: 12.5755586},
+        address: "Østerbrogade 140, 2100 København",
+        openingHours: "10-17"
     }, 
     {
-        name: "BartHolt Cykler Østerbro",
+        name: "BartHolt Cykler",
         availableBikes: 7,
-        coord: {lat: 55.51, lng: 12.27}
+        coord: {lat: 55.7069002, lng: 12.5755175},
+        address: "Østerbrogade 138, 2100 København",
+        openingHours: "09-17"
     },
     {
         name: "Saxil Cykler Østerbro",
         availableBikes: 11,
-        coord: {lat: 55.65, lng: 12.87}
+        coord: {lat: 55.7056537, lng: 12.5738675},
+        address: "Østerfælled Torv 19, 2100 København",
+        openingHours: "10-22"
     },
     {
-        name: "Amager cykler",
+        name: "CykelExperten Vanløse",
         availableBikes: 10,
-        coord: {lat: 55.65, lng: 12.3}
+        coord: {lat: 55.6978498, lng: 12.4726715},
+        address: "Slotsherrensvej 103, 2720 Vanløse",
+        openingHours: "08-15"
     }
 ]
 
@@ -56,19 +64,67 @@ function initMap() {
     const uluru = { lat: 55.71, lng: 12.57 };
     // The map, centered at Uluru
     const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 12,
+        zoom: 8,
         center: uluru,
     });
 
     const markers = allLocations.map((location, i) => {
-        return new google.maps.Marker({
-        position: location.coord,
-        label: labels[i % labels.length],
+        console.log(location);
+
+        const image = {
+            url: "images/shop.svg",
+            
+            scaledSize: new google.maps.Size(35, 35)
+        };
+
+        const marker = new google.maps.Marker({
+            position: location.coord,
+            title: location.name,
+            label: location.name,
+            map,
+            icon: image,
+            optimized: true
         });
+
+        marker.addListener("click", () => {
+            openShop(i);
+        });
+        return marker;
     });
 
     new MarkerClusterer(map, markers, {
         imagePath:
         "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
     });
+}
+
+
+let shopIsOpen = false;
+function openShop(location){
+    let shopInfo = document.getElementById("shopInfo");
+    if(shopIsOpen){
+        shopInfo.innerHTML = "";
+    }
+
+    let shop = allLocations[location];
+
+    let nameHeader = document.createElement("h5");
+    let nameTxt = document.createTextNode(shop.name);
+    nameHeader.appendChild(nameTxt);
+
+    let addressField = document.createElement("p");
+    let addressTxt = document.createTextNode(shop.address);
+    addressField.appendChild(addressTxt);
+
+    let openingHoursField = document.createElement("p");
+    let openingHours = document.createTextNode("Åbent hver dag: " +shop.openingHours);
+    openingHoursField.appendChild(openingHours);
+
+    let bikesStored = document.createElement("p");
+    let bikes = document.createTextNode("Ledige cykler: " +shop.availableBikes);
+    bikesStored.appendChild(bikes);
+
+    shopInfo.append(nameHeader, addressField, openingHours, bikesStored);
+
+    shopIsOpen = true;
 }

@@ -55,5 +55,13 @@ body{
     height: 40vh;
     width: 90vw;
     margin-left: 5vw;
+}
 
+#shopInfo {
+    text-align: center;
+}
+
+#shopInfo h5 {
+    font-size: large;
+    margin: 4vh 2vw 2vh 2vw;
 }
