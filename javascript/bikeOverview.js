@@ -9,7 +9,7 @@ function loadAllBikes() {
         titleCon.appendChild(titleTxt);
 
         let image = document.createElement('img');
-        image.setAttribute('src', '../images/' + bikeTypes[key].img);
+        image.setAttribute('src', 'images/' + bikeTypes[key].img);
 
         let descriptionCon = document.createElement('p');
         let descriptionTxt = document.createTextNode(bikeTypes[key].description);
