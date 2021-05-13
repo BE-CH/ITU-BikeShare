@@ -3,4 +3,24 @@
         width: 65vw;
         margin-left: 17.5vw;
     }
+
+    #top button {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #map {
+        width: 900px;
+        margin-left: calc((100vw - 900px) / 2);
+    }
+
+    #top button {
+        width: 600px;
+    }
+
+    #shopInfo {
+        width: 600px;
+        margin-left: calc((100vw - 600px) / 2);
+    }
 }
