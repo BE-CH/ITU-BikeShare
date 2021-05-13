@@ -41,7 +41,7 @@
     border-radius: 8px;
 }
 
-#shopInfo {
+.shopInfo {
     margin: 2vh 25vw;
     padding: 0.5vh 2vw;
     box-sizing: border-box;
@@ -50,6 +50,7 @@
     background-color: rgba(62, 59, 80, 0.5);
     border-radius: 8px;
     color: rgb(253, 231, 231);
+    transition: all ease-in-out 0.2s;
 }
 
 #shopInfo h5 {
