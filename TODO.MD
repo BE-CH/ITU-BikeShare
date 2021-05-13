@@ -1,0 +1,1 @@
+- Tjek firefox CORS når man loader en html fil med .load();
