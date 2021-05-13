@@ -1,0 +1,19 @@
+@media only screen and (min-width: 320px) {
+}
+
+@media only screen and (min-width: 768px) {
+  .inner-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logoContainer {
+    flex-direction: row;
+  }
+
+  .title {
+    margin-top: 0px;
+    margin-left: 20px;
+  }
+}
