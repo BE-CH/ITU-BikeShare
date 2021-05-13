@@ -103,13 +103,10 @@ let shopIsOpen = false;
 function openShop(location) {
     let shopInfo = document.getElementById('shopInfo');
     if (shopIsOpen) {
-        $('#shopInfo').removeClass('shopInfo', () => {
-            $('#shopInfo').addClass('shopInfo');
-        });
+        $('#shopInfo').removeClass('shopInfo').delay(200);
         shopInfo.innerHTML = '';
-    } else {
-        $('#shopInfo').addClass('shopInfo');
     }
+    $('#shopInfo').addClass('shopInfo');
 
     let shop = allLocations[location];
 
