@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <header></header>
+    <div id="top">
+        <h1>Lej en cykel</h1>
+        <h5>Find den nærmeste udlejer</h5>
+        <button>Find lokation</button>
+    </div>
+    
+    <div id="mapContainer">
+        <!--The div element for the map -->
+        <div id="map"></div>
+    </div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+</body>
+<script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
+<script src="javascript/main.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKOqKObTh0OqKcHyFiq19fNiIWW9PyLWg&callback=initMap&libraries=&v=weekly" async></script>
+</html>
