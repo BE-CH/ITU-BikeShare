@@ -1,6 +1,5 @@
 function loadAllBikes() {
     Object.keys(bikeTypes).forEach((key) => {
-        console.log(bikeTypes[key]);
         let container = document.createElement('div');
         container.setAttribute('class', 'bikeCard');
 
