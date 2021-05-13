@@ -1,227 +1,331 @@
 :root {
-  --logo-height: 35px;
-  --default-text-shadow: 2px 2px 2px rgba(25, 21, 40, 0.7);
-  --default-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.8);
+    --logo-height: 35px;
+    --default-text-shadow: 2px 2px 2px rgba(25, 21, 40, 0.7);
+    --default-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.8);
 }
 
 body {
-  background: rgb(131, 58, 180);
-  background: linear-gradient(31deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  overscroll-behavior-y: none;
+    background: rgb(131, 58, 180);
+    background: linear-gradient(31deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
 }
 
 #top {
-  height: 10vh;
-  text-align: center;
-  width: 100vw;
+    height: 10vh;
+    text-align: center;
+    width: 100vw;
 }
 
 #top h1 {
-  color: white;
+    color: white;
 }
 
 #top button {
-  background-color: #201c35;
-  outline: none;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  height: 50%;
-  width: 70%;
-  font-size: larger;
-  box-shadow: var(--default-box-shadow);
+    background-color: #201c35;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    height: 50%;
+    width: 70%;
+    font-size: larger;
+    box-shadow: var(--default-box-shadow);
 }
 
 #bikeOverview {
-  width: 100vw;
-  margin: 5vh 0 0 0;
+    width: 100vw;
+    margin: 5vh 0 0 0;
 }
 
 .bikeCard {
-  text-align: center;
-  font-weight: bold;
-  width: 95%;
-  border-top: 4px solid rgba(55, 52, 74, 0.5);
-  margin-left: 2.5%;
+    text-align: center;
+    font-weight: bold;
+    width: 95%;
+    border-top: 4px solid rgba(55, 52, 74, 0.5);
+    margin-left: 2.5%;
 }
 
 header {
-  background: rgb(55, 51, 70);
-  background: linear-gradient(90deg, rgba(55, 51, 70, 1) 0%, rgba(25, 21, 40, 1) 80%);
-  box-sizing: border-box;
-  box-shadow: var(--default-box-shadow);
-  padding: 2.5%;
-  height: 20vh;
-  display: flex;
-  align-items: center;
+    background: rgb(55, 51, 70);
+    background: linear-gradient(90deg, rgba(55, 51, 70, 1) 0%, rgba(25, 21, 40, 1) 80%);
+    box-sizing: border-box;
+    box-shadow: var(--default-box-shadow);
+    padding: 2.5%;
+    height: 20vh;
+    display: flex;
+    align-items: center;
 }
 
 .inner-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  flex-direction: column;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
 }
 
 .logoContainer {
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
 }
 
 .navigationList {
-  padding: 0px;
+    padding: 0px;
 }
 
 .navigationLi {
-  display: inline;
-  color: white;
-  margin-left: 10px;
-  margin-right: 10px;
-  line-height: var(--logo-height);
+    display: inline;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    line-height: var(--logo-height);
+    font-weight: bold;
 }
 
 .navigationLi a {
-  text-decoration: none;
-  color: white;
+    text-decoration: none;
+    color: white;
 }
 
 .title {
-  color: white;
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
-  margin-top: 15px;
-  margin-bottom: 0px;
-  line-height: var(--logo-height);
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    line-height: var(--logo-height);
 }
 
 .welcomeTitle {
-  margin: 0px;
-  color: white;
-  text-shadow: var(--default-text-shadow);
-  font-size: 22px;
-  width: 100%;
-  text-align: right;
-  box-sizing: border-box;
-  padding: 10px;
-  font-weight: bolder;
+    margin: 0px;
+    color: white;
+    text-shadow: var(--default-text-shadow);
+    font-size: 22px;
+    width: 100%;
+    text-align: right;
+    box-sizing: border-box;
+    padding: 10px;
+    font-weight: bolder;
 }
 
 .goToProfile {
-  margin: 0px;
-  font-size: 18px;
-  font-weight: bolder;
-  text-align: right;
-  padding: 0px 10px 0px 10px;
-  box-sizing: border-box;
+    margin: 0px;
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: right;
+    padding: 0px 10px 0px 10px;
+    box-sizing: border-box;
 }
 
 .goToProfile a {
-  color: #403d52;
-  text-decoration: underline;
+    color: #403d52;
+    text-decoration: underline;
 }
 
 .welcomeTop {
-  padding-top: 20px;
+    padding-top: 20px;
 }
 
 .logo {
-  height: var(--logo-height);
-  width: auto;
+    height: var(--logo-height);
+    width: auto;
 }
 
 .buttonsBottom {
-  margin-top: 10px;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: auto;
-  margin-bottom: 20px;
+    margin-top: 10px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: 20px;
 }
 
 .imageBar {
-  height: 80vh;
-  width: 100vw;
-  background-image: url('../images/frontpageimage.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
+    height: 80vh;
+    width: 100vw;
+    background-image: url('../images/frontpageimage.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .activeRents {
-  cursor: pointer;
-  background: rgba(62, 59, 80, 0.35);
-  padding: 10px;
-  border-radius: 10px;
-  box-sizing: border-box;
+    cursor: pointer;
+    background: rgba(62, 59, 80, 0.35);
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
 }
 
 .activeRentsTitle {
-  color: black;
-  font-size: 20px;
-  margin: 0px;
+    color: black;
+    font-size: 20px;
+    margin: 0px;
 }
 
 .activeRentsBike {
-  color: white;
-  margin: 0px;
-  margin-top: 5px;
-  font-size: 15px;
+    color: white;
+    margin: 0px;
+    margin-top: 5px;
+    font-size: 15px;
 }
 
 .rentBikeButton {
-  margin-top: 10px;
-  cursor: pointer;
-  background-color: #201c35;
-  padding: 10px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  border-radius: 10px;
-  box-shadow: var(--default-box-shadow);
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #201c35;
+    padding: 10px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-radius: 10px;
+    box-shadow: var(--default-box-shadow);
 }
 
 .rentBikeButton a,
 .ourbikesButton a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .rentBikeButtonText {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  text-align: center;
-  font-size: 30px;
-  margin: 0px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    margin: 0px;
 }
 
 .ourbikesButton {
-  margin-top: 10px;
-  cursor: pointer;
-  background-color: #403d52;
-  padding: 10px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-radius: 10px;
-  box-shadow: var(--default-box-shadow);
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #403d52;
+    padding: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: var(--default-box-shadow);
 }
 
 .ourBikesButtonText {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  text-align: center;
-  font-size: 20px;
-  margin: 0px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+    margin: 0px;
+}
+
+.createAccountForm {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.buttonContainer {
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.noMarginBottom {
+    margin-bottom: 0px;
+}
+
+#topSmaller {
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#topSmaller h1 {
+    text-align: center;
+    color: white;
+}
+
+.smallerTop {
+    height: auto;
+}
+
+.buttonContainer label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.buttonContainer input {
+    border-radius: 15px;
+    border: 0px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    box-shadow: var(--default-text-shadow);
+}
+
+.hrLine {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+}
+
+.cardTitle {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.expireandCVC {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.smallerContainer {
+    width: 48%;
+}
+
+.cardTitleAndIcons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.createAccountButtons button {
+    width: 100%;
+    box-shadow: var(--default-box-shadow);
+    border: 0px;
+    color: white;
+    background-color: #37344a;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.createAccountButtons a {
+    text-decoration: none;
+}
+
+.createAccountButtons {
+    margin-bottom: 20px;
+}
+
+.createAccountButtons p {
+    color: white;
+    text-align: center;
 }

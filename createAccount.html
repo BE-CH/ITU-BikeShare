@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/mediaqueries.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Bliv medlem - BikeShare</title>
+
+    <header>
+        <div class="inner-header">
+            <div class="logoContainer">
+                <img class="logo" src="images/logo.png" alt="Logo">
+                <p class="title">BikeShare</p>
+            </div>
+
+            <div class="pc-header">
+                <ul class="navigationList">
+                    <li class="navigationLi"><a href="index.html">Forside</a></li>
+                    <li class="navigationLi"><a href="contact.html">Kontakt</a></li>
+                    <li class="navigationLi"><a href="faq.html">FAQ</a></li>
+                    <li class="navigationLi"><a href="myprofile.html">Min profil</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+</head>
+
+<body>
+    <div id="topSmaller">
+        <h1 class="noMarginBottom">Bliv medlem</h1>
+    </div>
+    <div class="createAccountBody">
+        <form class="createAccountForm" action="index.html" method="GET">
+            <div class="sepertedformContainers">
+                <div class="userInformation">
+                    <div class="buttonContainer">
+                        <label for="firstname">Navn</label>
+                        <input type="text" name="firstname" id="firstname" placeholder="Dit fornavn">
+                    </div>
+
+                    <div class="buttonContainer">
+                        <label for="lastname">Efternavn</label>
+                        <input type="text" name="lastname" id="lastname" placeholder="Dit efternavn">
+                    </div>
+
+                    <div class="buttonContainer">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Din email">
+                    </div>
+
+                    <div class="buttonContainer">
+                        <label for="phonenumber">Mobilnummer</label>
+                        <input type="text" name="phonenumber" id="phonenumber" placeholder="Dit mobilnummer">
+                    </div>
+
+                    <div class="buttonContainer">
+                        <label for="password">Kodeord</label>
+                        <input type="password" name="password" id="password" placeholder="Dit kodeord">
+                    </div>
+
+                    <div class="buttonContainer">
+                        <label for="passwordAgain">Bekræft kodeord</label>
+                        <input type="password" name="passwordAgain" id="passwordAgain" placeholder="Bekræft kodeord">
+                    </div>
+                </div>
+
+                <div class="hrLine"></div>
+
+                <div class="cardNumberStuff">
+
+                    <div class="cardTitleAndIcons">
+                        <p class="cardTitle">Tilknyt betalingskort</p>
+                        <img src="images/cards.png" alt="">
+                    </div>
+
+                    <div class="buttonContainer">
+                        <label for="cardnumber">Kortnummer</label>
+                        <input type="text" name="cardnumber" id="cardnumber" placeholder="Dit kortnummer">
+                    </div>
+                    <div class="expireandCVC">
+                        <div class="buttonContainer smallerContainer">
+                            <label for="expiredate">Udløbsdato</label>
+                            <input class="epxireInput" type="text" name="expiredate" id="expiredate"
+                                placeholder="MM/AA">
+                        </div>
+                        <div class="buttonContainer smallerContainer">
+                            <label for="cvc">Kontrolcifre</label>
+                            <input class="cvcInput" type="password" name="cvc" id="cvc" placeholder="CVC">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="createAccountButtons">
+                <button type="submit">Opret bruger</button>
+                <a href="index.html">
+                    <p>Annuller</p>
+                </a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

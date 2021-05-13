@@ -2,63 +2,96 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .inner-header {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
+    .inner-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-  .logoContainer {
-    flex-direction: row;
-  }
+    header {
+        height: 10vh;
+    }
 
-  .title {
-    margin-top: 0px;
-    margin-left: 20px;
-  }
+    .imageBar {
+        height: 90vh;
+    }
 
-  .welcomeTitle {
-    font-size: 30px;
-    text-align: left;
-  }
+    .hrLine {
+        display: none;
+    }
 
-  .goToProfile {
-    font-size: 22px;
-    text-align: left;
-  }
+    .sepertedformContainers {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 
-  .welcomeTop {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    .userInformation {
+        width: 48%;
+    }
 
-  .buttonsBottom {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-top: 50px;
-  }
+    .cardNumberStuff {
+        width: 48%;
+    }
 
-  .activeRents {
-    width: 40%;
-  }
+    .logoContainer {
+        flex-direction: row;
+    }
 
-  .rentBikeButton,
-  .ourbikesButton {
-    width: 100%;
-  }
+    .title {
+        margin-top: 0px;
+        margin-left: 20px;
+    }
 
-  .rentBikeButton {
-    margin-top: 0px;
-  }
+    .welcomeTitle {
+        font-size: 30px;
+        text-align: left;
+    }
 
-  .rentBikenOurBikesButtonContainer {
-    width: 50%;
-  }
+    .goToProfile {
+        font-size: 22px;
+        text-align: left;
+    }
 
-  .rentBikenOurBikesButtonContainer {
-  }
+    .welcomeTop {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .buttonsBottom {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-top: 50px;
+    }
+
+    .activeRents {
+        width: 40%;
+    }
+
+    .rentBikeButton,
+    .ourbikesButton {
+        width: 100%;
+    }
+
+    .rentBikeButton {
+        margin-top: 0px;
+    }
+
+    .rentBikenOurBikesButtonContainer {
+        width: 50%;
+    }
+
+    .rentBikenOurBikesButtonContainer {
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .createAccountForm {
+        width: 75%;
+    }
 }
