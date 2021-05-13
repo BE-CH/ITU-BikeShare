@@ -1,4 +1,3 @@
-
 let allbikes = {
     citybike: {
         title: "Citybike",
@@ -25,4 +24,51 @@ let allbikes = {
         description: "Mustang Family elladcykel har kraftige skivebremser, parkeringsbremse og 4 børneseler  så der er fuld fokus på sikkerheden. Mustang Family er både sikker for dig og din familie. ",
         img: "elLadcykel.png"
     }
+}
+
+const apiKey = "AIzaSyCKOqKObTh0OqKcHyFiq19fNiIWW9PyLWg";
+
+let allLocations = [
+    {
+        name: "FriBikeShop Østerbro",
+        availableBikes: 10,
+        coord: {lat: 55.71, lng: 12.57}
+    }, 
+    {
+        name: "BartHolt Cykler Østerbro",
+        availableBikes: 7,
+        coord: {lat: 55.51, lng: 12.27}
+    },
+    {
+        name: "Saxil Cykler Østerbro",
+        availableBikes: 11,
+        coord: {lat: 55.65, lng: 12.87}
+    },
+    {
+        name: "Amager cykler",
+        availableBikes: 10,
+        coord: {lat: 55.65, lng: 12.3}
+    }
+]
+
+function initMap() {
+    // The location of Uluru
+    const uluru = { lat: 55.71, lng: 12.57 };
+    // The map, centered at Uluru
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: uluru,
+    });
+
+    const markers = allLocations.map((location, i) => {
+        return new google.maps.Marker({
+        position: location.coord,
+        label: labels[i % labels.length],
+        });
+    });
+
+    new MarkerClusterer(map, markers, {
+        imagePath:
+        "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+    });
 }
