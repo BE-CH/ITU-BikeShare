@@ -119,6 +119,10 @@ header {
     flex-direction: column;
 }
 
+.logoContainer a {
+    text-decoration: none;
+}
+
 .navigationList {
     padding: 0px;
 }
