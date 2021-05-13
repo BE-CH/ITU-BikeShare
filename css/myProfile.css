@@ -1,0 +1,101 @@
+#topSmaller {
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#topSmaller h1 {
+    text-align: center;
+    color: white;
+}
+.buttonContainer label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.buttonContainer input {
+    border-radius: 15px;
+    border: 0px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    box-shadow: var(--default-text-shadow);
+}
+
+.buttonContainer {
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.myProfileContent {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cardTitle {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.connectedCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cardNumber {
+    margin: 0px;
+    font-size: 18px;
+}
+
+.expireData {
+    margin: 0px;
+}
+
+.connectedCard img {
+    width: auto;
+    height: 20px;
+}
+
+.myProfileSavedCards {
+    margin-bottom: 20px;
+}
+
+.saveSettings {
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #37344a;
+    border: 0px;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.logoutButton {
+    display: block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f12c57;
+    border: 0px;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.myProfileBottom a {
+    text-decoration: none;
+}

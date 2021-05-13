@@ -1,0 +1,11 @@
+@media only screen and (min-width: 768px) {
+    .myProfileContent {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .myProfileContent {
+        width: 35%;
+    }
+}
