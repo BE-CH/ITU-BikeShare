@@ -1,0 +1,50 @@
+#top {
+    height: 15vh;
+    text-align: center;
+    width: 100vw;
+}
+
+#top h1 {
+    color: white;
+    text-align: center;
+    width: 100vw;
+    color: white;
+}
+
+#top h1,
+#top h5 {
+    margin: 1vh;
+}
+
+#top button {
+    background-color: #201c35;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    height: 35%;
+    width: 70%;
+    font-size: larger;
+    box-shadow: 0px 4px 10px #2e2e2e8a;
+}
+
+#mapContainer {
+    margin-top: 1vh;
+    height: 35vh;
+    width: 100vw;
+}
+
+#map {
+    height: 100%;
+    width: 90%;
+    margin-left: 5%;
+}
+
+#shopInfo {
+    text-align: center;
+}
+
+#shopInfo h5 {
+    font-size: large;
+    margin: 2vh 2vw 2vh 2vw;
+}
