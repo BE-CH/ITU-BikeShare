@@ -1,0 +1,64 @@
+@media only screen and (min-width: 320px) {
+}
+
+@media only screen and (min-width: 768px) {
+  .inner-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logoContainer {
+    flex-direction: row;
+  }
+
+  .title {
+    margin-top: 0px;
+    margin-left: 20px;
+  }
+
+  .welcomeTitle {
+    font-size: 30px;
+    text-align: left;
+  }
+
+  .goToProfile {
+    font-size: 22px;
+    text-align: left;
+  }
+
+  .welcomeTop {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .buttonsBottom {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 50px;
+  }
+
+  .activeRents {
+    width: 40%;
+  }
+
+  .rentBikeButton,
+  .ourbikesButton {
+    width: 100%;
+  }
+
+  .rentBikeButton {
+    margin-top: 0px;
+  }
+
+  .rentBikenOurBikesButtonContainer {
+    width: 50%;
+  }
+
+  .rentBikenOurBikesButtonContainer {
+  }
+}
