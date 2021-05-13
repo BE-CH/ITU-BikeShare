@@ -24,6 +24,15 @@ body {
 
 #top h1 {
     color: white;
+    height: 20vh;
+    text-align: center;
+    width: 100vw;
+    color: white;
+}
+
+#top h1,
+#top h5 {
+    margin: 1vh;
 }
 
 #top button {
@@ -32,10 +41,10 @@ body {
     border: none;
     border-radius: 4px;
     color: white;
-    height: 50%;
+    height: 35%;
     width: 70%;
     font-size: larger;
-    box-shadow: var(--default-box-shadow);
+    box-shadow: 0px 4px 10px #2e2e2e8a;
 }
 
 #bikeOverview {
@@ -49,6 +58,38 @@ body {
     width: 95%;
     border-top: 4px solid rgba(55, 52, 74, 0.5);
     margin-left: 2.5%;
+}
+
+#mapContainer {
+    margin-top: 1vh;
+}
+
+#map {
+    height: 40vh;
+    width: 90vw;
+    margin-left: 5vw;
+}
+
+#shopInfo {
+    text-align: center;
+}
+
+#shopInfo h5 {
+    font-size: large;
+    margin: 4vh 2vw 2vh 2vw;
+}
+
+#shopInfo button {
+    background-color: #201c35;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    height: 5vh;
+    width: 70%;
+    font-size: larger;
+    box-shadow: 0px 4px 10px #2e2e2e8a;
+    margin-bottom: 2vh;
 }
 
 header {
