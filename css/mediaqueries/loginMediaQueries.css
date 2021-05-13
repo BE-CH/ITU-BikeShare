@@ -1,0 +1,11 @@
+@media only screen and (min-width: 768px) {
+   .inner-main-holder{
+       width: 50%;
+   }
+    
+}
+@media only screen and (min-width: 1440px){
+    .inner-main-holder{
+        width: 30%;
+    }
+}
