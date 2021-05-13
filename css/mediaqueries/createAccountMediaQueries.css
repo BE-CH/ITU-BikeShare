@@ -1,0 +1,26 @@
+@media only screen and (min-width: 768px) {
+    .sepertedformContainers {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .cardNumberStuff {
+        width: 48%;
+    }
+
+    .userInformation {
+        width: 48%;
+    }
+
+    .hrLine {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .createAccountForm {
+        width: 75%;
+    }
+}
