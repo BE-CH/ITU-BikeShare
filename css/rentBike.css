@@ -1,0 +1,64 @@
+#top {
+    width: 100vw;
+    height: 20vh;
+    text-align: center;
+    color: white;
+}
+
+#bikePicker {
+    width: 100vw;
+    min-height: 40vh;
+    text-align: center;
+    color: white;
+}
+
+#bikePicker select {
+    height: 4vh;
+    padding: 1% 1%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+}
+
+.bikecard {
+    margin-top: 2vh;
+    width: 80%;
+    margin-left: 10%;
+    background-color: rgba(55, 52, 74, 0.5);
+    border-radius: 8px;
+    padding: 1vh 2vw;
+    box-sizing: border-box;
+    margin-bottom: 5vh;
+}
+
+.bikecard img {
+    max-height: 20vh;
+    object-fit: contain;
+}
+
+.bikecard #priceContainer {
+    margin-top: 5%;
+    color: white;
+}
+
+.bikecard #priceContainer .price {
+    margin: 5% 25% 0% 0%;
+}
+
+.bikecard #priceContainer .price p {
+    display: inline-block;
+    margin: 0% 2%;
+    line-height: 1.5em;
+    vertical-align: middle;
+}
+
+.rentBut {
+    position: absolute;
+    right: 15%;
+    background-color: #30b34e;
+    width: 20%;
+    border: none;
+    height: 3%;
+    border-radius: 8px;
+    color: white;
+}
