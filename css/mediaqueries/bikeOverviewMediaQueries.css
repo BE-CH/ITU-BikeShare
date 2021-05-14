@@ -37,6 +37,7 @@
     .bikeCard img {
         display: block;
         height: 25%;
+        max-width: 80%;
         object-fit: contain;
         margin-left: auto;
         margin-right: auto;
