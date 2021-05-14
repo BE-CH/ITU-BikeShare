@@ -12,10 +12,10 @@
 
     .bikeCard {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
+        flex-wrap: nowrap;
         justify-content: top;
-        align-items: center;
+        align-content: center;
         width: 18%;
         margin: 0;
         vertical-align: top;
@@ -25,13 +25,17 @@
         background-color: rgba(55, 52, 74, 0.5);
     }
 
+    .bikeCard h3 {
+        margin: 5%;
+    }
+
     .bikeCard p {
-        padding: 2px;
-        box-sizing: border-box;
+        display: block;
         line-height: 1.5;
     }
 
     .bikeCard img {
+        display: block;
         height: 25%;
         object-fit: contain;
         margin-left: auto;
@@ -40,9 +44,5 @@
 
     .bikeCard h3 {
         width: 100%;
-    }
-
-    .bikeCard img {
-        width: 80%;
     }
 }
