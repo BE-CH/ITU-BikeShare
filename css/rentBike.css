@@ -62,3 +62,44 @@
     border-radius: 8px;
     color: white;
 }
+
+#confirmModal {
+    position: absolute;
+    background-color: rgba(55, 52, 74);
+    top: 40%;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%);
+    text-align: center;
+    z-index: 1;
+    color: white;
+    border-radius: 8px;
+    padding: 3vh 1vw;
+    box-sizing: border-box;
+}
+
+#confirmModal h3 {
+    margin: 1vh 1vw;
+}
+
+#confirmBut {
+    width: 60%;
+    height: 5vh;
+    background-color: #30b34e;
+    color: white;
+    border: none;
+    box-shadow: 1px 2px 4px green;
+}
+
+#closeBut {
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    background: none;
+    border: none;
+    color: red;
+    font-size: x-large;
+    border-radius: 4px;
+    height: 10%;
+    width: 10%;
+}
