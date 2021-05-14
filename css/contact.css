@@ -1,0 +1,26 @@
+#top {
+    height: 10vh;
+    color: white;
+    width: 100vw;
+    text-align: center;
+}
+
+#top h1,
+#top h3 {
+    margin: 2vh 2vw;
+}
+
+#info {
+    width: 100vw;
+}
+
+.subInfo {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5vh;
+}
+
+.subInfo h5 {
+    font-size: larger;
+    margin: 1vh 1vw;
+}
