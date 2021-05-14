@@ -134,3 +134,8 @@ let allFaqs = [
         ],
     },
 ];
+
+// den her skal bruges i localstorage, fra renbike.js og index.js
+let activeRent = {
+    active: false,
+};

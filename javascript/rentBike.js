@@ -49,7 +49,8 @@ function changeBike() {
     Object.keys(bikeTypes[bike].price).forEach((key) => {
         if (key == 'hour') {
             for (let i = 0; i < bikeTypes[bike].price[key].length; i++) {
-                prices.push(createLine(i + 1 + ' Time', bikeTypes[bike].price[key][i], bike));
+                let time = i == 0 ? 'Time' : 'Timer';
+                prices.push(createLine(i + 1 + ' ' + time, bikeTypes[bike].price[key][i], bike));
             }
         } else if (key == 'allDay') {
             prices.push(createLine('Hel dag', bikeTypes[bike].price[key], bike));
@@ -84,12 +85,130 @@ function createLine(text, value, bike) {
     let butTxt = document.createTextNode('Lej!');
     button.appendChild(butTxt);
     button.setAttribute('class', 'rentBut');
-    button.setAttribute('onclick', 'rent("' + bike + '","' + value + '","' + text + '")');
+    button.setAttribute('onclick', 'modal("' + bike + '","' + value + '","' + text + '")');
 
     container.append(field, priceField, button);
     return container;
 }
 
 function rent(bike, price, time) {
-    console.log('rent: ' + bikeTypes[bike].title + ' for ' + time + ' price: ' + price);
+    let pickupTime;
+    try {
+        pickupTime = document.getElementById('timeSelector').value;
+    } catch (e) {}
+    let timeamount = time.split(' ');
+    if (timeamount.length == 2 && (timeamount[1] == 'Time' || timeamount[1] == 'Timer')) {
+        activeRent = {
+            start: pickupTime,
+            pickupTime,
+            bike,
+            price,
+        };
+    } else if (timeamount.length == 2 && timeamount[1] == 'dag') {
+        activeRent = {
+            start: pickupTime,
+            pickupTime,
+            bike,
+            price,
+        };
+    } else if (timeamount.length == 1) {
+        activeRent = {
+            active: true,
+            bike,
+            price,
+        };
+    } else {
+        console.error('Error');
+    }
+}
+
+let openModal = false;
+
+function modal(bike, price, time) {
+    let timeamount = time.split(' ');
+    if (openModal) {
+        document.getElementById('confirmModal').remove();
+    }
+    let container = document.createElement('div');
+    container.setAttribute('id', 'confirmModal');
+
+    let header = document.createElement('h3');
+    let headerTxt = document.createTextNode('Lej en: ' + bikeTypes[bike].title + ' i ' + time);
+    header.appendChild(headerTxt);
+    container.appendChild(header);
+
+    if (timeamount.length == 2 && (timeamount[1] == 'Time' || timeamount[1] == 'Timer' || timeamount[1] == 'dag')) {
+        let pickup = document.createElement('input');
+        if (timeamount[1] == 'dag') {
+            pickup.setAttribute('type', 'date');
+        } else {
+            pickup.setAttribute('type', 'time');
+        }
+        pickup.setAttribute('name', 'selectTime');
+        pickup.setAttribute('id', 'timeSelector');
+
+        Date.prototype.addHours = function (h) {
+            this.setTime(this.getTime() + h * 60 * 60 * 1000);
+            return this;
+        };
+        let date = new Date().addHours(0.5);
+
+        let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+        let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+
+        currentTime = hours + ':' + minutes;
+
+        pickup.setAttribute('value', currentTime);
+
+        let label = document.createElement('label');
+        let labelTxt = document.createTextNode('Vælg afhentnings tidspunkt: ');
+        label.appendChild(labelTxt);
+        label.setAttribute('for', 'selectTime');
+
+        container.append(label, pickup);
+    } else if (timeamount[0] == 'Minutpris') {
+        let pickup = document.createElement('p');
+        let pickupText = document.createTextNode('Start nu!');
+        pickup.appendChild(pickupText);
+
+        container.appendChild(pickup);
+    } else {
+        let pickup = document.createElement('p');
+        let pickupText = document.createTextNode('Fejl! Beklager');
+        pickup.appendChild(pickupText);
+
+        container.appendChild(pickup);
+    }
+
+    let place = document.createElement('p');
+    let placeTxt = document.createTextNode('hos - undefined');
+    place.appendChild(placeTxt);
+
+    let priceField = document.createElement('p');
+    let priceAmount = document.createTextNode('Pris: ' + price);
+    priceField.appendChild(priceAmount);
+
+    let confirmBut = document.createElement('button');
+    let butTxt = document.createTextNode('Bekræft');
+    confirmBut.appendChild(butTxt);
+    confirmBut.setAttribute('id', 'confirmBut');
+    confirmBut.setAttribute('onclick', 'rent("' + bike + '","' + price + '","' + time + '")');
+
+    let closeBut = document.createElement('button');
+    let closeTxt = document.createTextNode('X');
+    closeBut.appendChild(closeTxt);
+    closeBut.setAttribute('id', 'closeBut');
+    closeBut.setAttribute('onclick', 'closeModal()');
+
+    container.append(place, priceField, confirmBut, closeBut);
+    $('body').append(container);
+
+    openModal = true;
+}
+
+function closeModal() {
+    if (openModal) {
+        document.getElementById('confirmModal').remove();
+    }
+    openModal = false;
 }
