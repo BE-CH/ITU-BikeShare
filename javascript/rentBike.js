@@ -1,3 +1,6 @@
+const currentLocation = new URLSearchParams(window.location.search).get('location');
+$('#shopName').text(getLocalStorage('allLocations')[currentLocation].name);
+
 function setupRent() {
     let bikePicker = document.getElementById('bikePicker');
 
@@ -24,6 +27,7 @@ function setupRent() {
     changeBike();
 }
 
+// The chosen bike.
 let activeBike = false;
 
 function changeBike() {
@@ -98,25 +102,43 @@ function rent(bike, price, time) {
     } catch (e) {}
     let timeamount = time.split(' ');
     if (timeamount.length == 2 && (timeamount[1] == 'Time' || timeamount[1] == 'Timer')) {
-        activeRent = {
+        const startDate = new Date();
+        startDate.setHours(startDate.getHours() + 2);
+        setLocalStorage('activeRent', {
             start: pickupTime,
+            startDate,
             pickupTime,
             bike,
             price,
-        };
+            location: currentLocation,
+        });
+        updateLocation();
     } else if (timeamount.length == 2 && timeamount[1] == 'dag') {
-        activeRent = {
+        startDate.setHours(pickupTime.split(':')[0]);
+        startDate.setMinutes(pickupTime.split(':')[1]);
+        setLocalStorage('activeRent', {
             start: pickupTime,
+            startDate,
             pickupTime,
             bike,
             price,
-        };
+            location: currentLocation,
+        });
+        updateLocation();
     } else if (timeamount.length == 1) {
-        activeRent = {
-            active: true,
+        const date = new Date();
+        let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+        let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+
+        currentTime = hours + ':' + minutes;
+        setLocalStorage('activeRent', {
             bike,
             price,
-        };
+            location: currentLocation,
+            start: currentTime,
+            startDate: date,
+        });
+        updateLocation();
     } else {
         console.error('Error');
     }
@@ -146,11 +168,6 @@ function modal(bike, price, time) {
         }
         pickup.setAttribute('name', 'selectTime');
         pickup.setAttribute('id', 'timeSelector');
-
-        Date.prototype.addHours = function (h) {
-            this.setTime(this.getTime() + h * 60 * 60 * 1000);
-            return this;
-        };
         let date = new Date().addHours(0.5);
 
         let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
@@ -181,11 +198,11 @@ function modal(bike, price, time) {
     }
 
     let place = document.createElement('p');
-    let placeTxt = document.createTextNode('hos - undefined');
+    let placeTxt = document.createTextNode(`Hos ${getLocalStorage('allLocations')[currentLocation].name}`);
     place.appendChild(placeTxt);
 
     let priceField = document.createElement('p');
-    let priceAmount = document.createTextNode('Pris: ' + price);
+    let priceAmount = document.createTextNode('Pris: ' + price + ' ,-');
     priceField.appendChild(priceAmount);
 
     let confirmBut = document.createElement('button');
@@ -211,4 +228,11 @@ function closeModal() {
         document.getElementById('confirmModal').remove();
     }
     openModal = false;
+}
+
+function updateLocation() {
+    const allLocations = getLocalStorage('allLocations');
+    allLocations[currentLocation].availableBikes -= 1;
+
+    setLocalStorage('allLocations', allLocations);
 }

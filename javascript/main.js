@@ -1,3 +1,23 @@
+$(document).ready(() => {
+    const bikeTypesStorage = localStorage.getItem('bikeTypes');
+    const allLocationsStorage = localStorage.getItem('allLocations');
+    const allFaqsStorage = localStorage.getItem('allFaqs');
+    const activeRentStorage = localStorage.getItem('activeRent');
+    const accountsStorage = localStorage.getItem('accounts');
+
+    if (allLocationsStorage === null) {
+        localStorage.setItem('allLocations', JSON.stringify(allLocations));
+    }
+
+    if (activeRentStorage === null) {
+        localStorage.setItem('activeRent', JSON.stringify(activeRent));
+    }
+
+    if (accountsStorage === null) {
+        localStorage.setItem('accounts', JSON.stringify(accounts));
+    }
+});
+
 let bikeTypes = {
     citybike: {
         title: 'Citybike',
@@ -104,8 +124,7 @@ let allFaqs = [
             },
             {
                 question: 'Hvordan lejer jeg en cykel?',
-                answer:
-                    'Hent BikeShare-appen, eller brug vores webside. Opret en konto og tilføj de relevante oplysninger samt et betalingskort, så er du klar til at køre. Du kan finde cykler tæt på dig og priser under “Lej en cykel”',
+                answer: 'Hent BikeShare-appen, eller brug vores webside. Opret en konto og tilføj de relevante oplysninger samt et betalingskort, så er du klar til at køre. Du kan finde cykler tæt på dig og priser under “Lej en cykel”',
                 id: 3,
             },
         ],
@@ -115,27 +134,38 @@ let allFaqs = [
         faqs: [
             {
                 question: 'Hvem kan passe cyklerne?',
-                answer:
-                    'Alle cyklerne passer til personer, der måler ca. 155 cm eller mere. Tilpas sadlen ved at bruge håndtaget under sadlen. Cyklerne passer ikke til børn, og der er ikke mulighed for børnesæder.',
+                answer: 'Alle cyklerne passer til personer, der måler ca. 155 cm eller mere. Tilpas sadlen ved at bruge håndtaget under sadlen. Cyklerne passer ikke til børn, og der er ikke mulighed for børnesæder.',
                 id: 4,
             },
             {
                 question: 'Er alle cyklerne forsikret?',
-                answer:
-                    'Ja. Alle BikeShare cykler er dækket af tredjeparts forsikring selskaber og du vil blot skulle betale en selvrisiko i tilfælde af der skulle ske et uheld. Denne pris reduceres automatisk til et specifikt beløb afhængig af ulykken. ',
+                answer: 'Ja. Alle BikeShare cykler er dækket af tredjeparts forsikring selskaber og du vil blot skulle betale en selvrisiko i tilfælde af der skulle ske et uheld. Denne pris reduceres automatisk til et specifikt beløb afhængig af ulykken. ',
                 id: 5,
             },
             {
                 question: 'Hvor hurtigt kan en el-cykel kører?',
-                answer:
-                    'Bycyklerne har en elmotor, der assisterer dig op til 23 km/t og ladcyklen op til 15 km/t. Motoren giver kun assistance, når du træder pedalerne rundt. Når du bruger bremserne, slår motoren automatisk fra.',
+                answer: 'Bycyklerne har en elmotor, der assisterer dig op til 23 km/t og ladcyklen op til 15 km/t. Motoren giver kun assistance, når du træder pedalerne rundt. Når du bruger bremserne, slår motoren automatisk fra.',
                 id: 6,
             },
         ],
     },
 ];
 
-// den her skal bruges i localstorage, fra renbike.js og index.js
 let activeRent = {
     active: false,
+};
+
+let accounts = [];
+
+function getLocalStorage(string) {
+    return JSON.parse(localStorage.getItem(string));
+}
+
+function setLocalStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+Date.prototype.addHours = function (h) {
+    this.setTime(this.getTime() + h * 60 * 60 * 1000);
+    return this;
 };

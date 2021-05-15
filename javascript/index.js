@@ -1,3 +1,6 @@
 function checkActiveRent() {
-    console.log(activeRent);
+    if (getLocalStorage('activeRent').active) {
+        const activeRent = getLocalStorage('activeRent');
+        $('#activeRentText').text(`- ${activeRent.bike} ()`);
+    }
 }

@@ -62,6 +62,7 @@ function openShop(location) {
     bikesStored.appendChild(bikes);
 
     let button = document.createElement('button');
+    button.setAttribute('onclick', `location.href='rentBike.html?location=${location}'`);
     let butTxt = document.createTextNode('Gå til butik');
     button.appendChild(butTxt);
 
