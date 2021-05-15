@@ -103,7 +103,7 @@ function rent(bike, price, time) {
     let timeamount = time.split(' ');
     if (timeamount.length == 2 && (timeamount[1] == 'Time' || timeamount[1] == 'Timer')) {
         const startDate = new Date();
-        startDate.setHours(startDate.getHours() + 2);
+        startDate.setHours(pickupTime.split(':')[0], pickupTime.split(':')[1], 00);
         setLocalStorage('activeRent', {
             start: pickupTime,
             startDate,
@@ -114,19 +114,23 @@ function rent(bike, price, time) {
         });
         updateLocation();
     } else if (timeamount.length == 2 && timeamount[1] == 'dag') {
-        startDate.setHours(pickupTime.split(':')[0]);
-        startDate.setMinutes(pickupTime.split(':')[1]);
-        setLocalStorage('activeRent', {
-            start: pickupTime,
-            startDate,
-            pickupTime,
-            bike,
-            price,
-            location: currentLocation,
-        });
-        updateLocation();
+        if (pickupTime.length < 1) {
+            alert('Ingen dato valgt');
+        } else {
+            const startDate = new Date();
+            startDate.setDate();
+            setLocalStorage('activeRent', {
+                start: pickupTime,
+                startDate,
+                pickupTime,
+                bike,
+                price,
+                location: currentLocation,
+            });
+            updateLocation();
+        }
     } else if (timeamount.length == 1) {
-        const date = new Date();
+        const date = new Date().toLocaleDateString('da-DK');
         let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
         let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
 
