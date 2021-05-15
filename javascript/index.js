@@ -1,5 +1,7 @@
 const currentDate = new Date();
 
+$('#firstnameLoggedIn').text(getUserInfo('firstname')); // set firstname
+
 function checkActiveRent() {
     if (getLocalStorage('activeRent') != null && getLocalStorage('activeRent').active != false) {
         console.log(getLocalStorage('activeRent'));
