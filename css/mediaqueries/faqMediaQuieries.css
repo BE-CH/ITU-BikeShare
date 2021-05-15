@@ -1,0 +1,12 @@
+@media only screen and (min-width: 768px) {
+    #faqs {
+        width: 100vw;
+    }
+
+    .faqTopic {
+        width: 35%;
+        display: inline-block;
+        margin-left: 10%;
+        vertical-align: top;
+    }
+}

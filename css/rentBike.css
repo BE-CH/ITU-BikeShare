@@ -1,6 +1,5 @@
 #top {
     width: 100vw;
-    height: 20vh;
     text-align: center;
     color: white;
 }
@@ -14,7 +13,7 @@
 
 #bikePicker select {
     height: 4vh;
-    padding: 1% 1%;
+    padding-left: 1%;
     box-sizing: border-box;
     border: none;
     border-radius: 4px;
@@ -26,9 +25,10 @@
     margin-left: 10%;
     background-color: rgba(55, 52, 74, 0.5);
     border-radius: 8px;
-    padding: 1vh 2vw;
+    padding: 1vh 2vw 2vh 2vw;
     box-sizing: border-box;
     margin-bottom: 5vh;
+    position: relative;
 }
 
 .bikecard img {
@@ -54,11 +54,11 @@
 
 .rentBut {
     position: absolute;
-    right: 15%;
+    right: 8%;
     background-color: #30b34e;
     width: 20%;
     border: none;
-    height: 3%;
+    height: 6%;
     border-radius: 8px;
     color: white;
 }
