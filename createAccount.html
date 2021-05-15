@@ -31,37 +31,38 @@
         <h1 class="noMarginBottom">Bliv medlem</h1>
     </div>
     <div class="createAccountBody">
-        <form class="createAccountForm" action="index.html" method="GET">
+        <form class="createAccountForm" id="createAccount">
             <div class="sepertedformContainers">
                 <div class="userInformation">
                     <div class="buttonContainer">
                         <label for="firstname">Navn</label>
-                        <input type="text" name="firstname" id="firstname" placeholder="Dit fornavn">
+                        <input type="text" name="firstname" id="firstname" placeholder="Dit fornavn" required>
                     </div>
 
                     <div class="buttonContainer">
                         <label for="lastname">Efternavn</label>
-                        <input type="text" name="lastname" id="lastname" placeholder="Dit efternavn">
+                        <input type="text" name="lastname" id="lastname" placeholder="Dit efternavn" required>
                     </div>
 
                     <div class="buttonContainer">
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="Din email">
+                        <input type="email" name="email" id="email" placeholder="Din email" required>
                     </div>
 
                     <div class="buttonContainer">
                         <label for="phonenumber">Mobilnummer</label>
-                        <input type="text" name="phonenumber" id="phonenumber" placeholder="Dit mobilnummer">
+                        <input type="text" name="phonenumber" id="phonenumber" placeholder="Dit mobilnummer" required>
                     </div>
 
                     <div class="buttonContainer">
                         <label for="password">Kodeord</label>
-                        <input type="password" name="password" id="password" placeholder="Dit kodeord">
+                        <input type="password" name="password" id="password" placeholder="Dit kodeord" required>
                     </div>
 
                     <div class="buttonContainer">
                         <label for="passwordAgain">Bekræft kodeord</label>
-                        <input type="password" name="passwordAgain" id="passwordAgain" placeholder="Bekræft kodeord">
+                        <input type="password" name="passwordAgain" id="passwordAgain" placeholder="Bekræft kodeord"
+                            required>
                     </div>
                 </div>
 
@@ -76,17 +77,17 @@
 
                     <div class="buttonContainer">
                         <label for="cardnumber">Kortnummer</label>
-                        <input type="text" name="cardnumber" id="cardnumber" placeholder="Dit kortnummer">
+                        <input type="text" name="cardnumber" id="cardnumber" placeholder="Dit kortnummer" required>
                     </div>
                     <div class="expireandCVC">
                         <div class="buttonContainer smallerContainer">
                             <label for="expiredate">Udløbsdato</label>
-                            <input class="epxireInput" type="text" name="expiredate" id="expiredate"
-                                placeholder="MM/AA">
+                            <input class="epxireInput" type="text" name="expiredate" id="expiredate" placeholder="MM/AA"
+                                required>
                         </div>
                         <div class="buttonContainer smallerContainer">
                             <label for="cvc">Kontrolcifre</label>
-                            <input class="cvcInput" type="password" name="cvc" id="cvc" placeholder="CVC">
+                            <input class="cvcInput" type="password" name="cvc" id="cvc" placeholder="CVC" required>
                         </div>
                     </div>
                 </div>
@@ -103,3 +104,8 @@
 </body>
 
 </html>
+
+<script src="javascript/jquery/jQuery3-6-0.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+<script src="javascript/main.js" id="scripttag" data-page="createAccount"></script>
+<script src="javascript/createAccount.js"></script>

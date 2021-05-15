@@ -29,9 +29,10 @@
         <div class="inner-main-holder">
             <h1 id="login-header">Login</h1>
             <form id="login-form">
-                <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email...">
+                <input type="email" name="username" id="username-field" class="login-form-field" placeholder="Email..."
+                    required>
                 <input type="password" name="password" id="password-field" class="login-form-field"
-                    placeholder="Password...">
+                    placeholder="Password..." required>
                 <button type="submit" id="login-form-submit">Log ind</button>
                 <div class="line"></div>
                 <a href="createAccount.html"><button id="create-account-button" type="button">Opret konto</button></a>
@@ -41,3 +42,10 @@
 </body>
 
 </html>
+
+
+<script src="javascript/jquery/jQuery3-6-0.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+
+<script src="javascript/main.js" id="scripttag" data-page="login"></script>
+<script src="javascript/login.js"></script>

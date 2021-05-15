@@ -4,3 +4,5 @@ function checkActiveRent() {
         $('#activeRentText').text(`- ${activeRent.bike} ()`);
     }
 }
+
+$('#firstnameLoggedIn').text(getUserInfo('firstname')); // set firstname

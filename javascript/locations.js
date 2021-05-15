@@ -3,7 +3,7 @@ function initMap() {
     const copenahgen = { lat: 55.71, lng: 12.57 };
     // The map, centered at Uluru
     const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 8,
+        zoom: 10,
         center: copenahgen,
     });
 

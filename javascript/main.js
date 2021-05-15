@@ -1,10 +1,11 @@
-$(document).ready(() => {
-    const bikeTypesStorage = localStorage.getItem('bikeTypes');
-    const allLocationsStorage = localStorage.getItem('allLocations');
-    const allFaqsStorage = localStorage.getItem('allFaqs');
-    const activeRentStorage = localStorage.getItem('activeRent');
-    const accountsStorage = localStorage.getItem('accounts');
+const bikeTypesStorage = localStorage.getItem('bikeTypes');
+const allLocationsStorage = localStorage.getItem('allLocations');
+const allFaqsStorage = localStorage.getItem('allFaqs');
+const activeRentStorage = localStorage.getItem('activeRent');
+const accountsStorage = localStorage.getItem('accounts');
+const sessionStorage = localStorage.getItem('session');
 
+$(document).ready(() => {
     if (allLocationsStorage === null) {
         localStorage.setItem('allLocations', JSON.stringify(allLocations));
     }
@@ -15,6 +16,12 @@ $(document).ready(() => {
 
     if (accountsStorage === null) {
         localStorage.setItem('accounts', JSON.stringify(accounts));
+    }
+
+    if (!isLoggedIn()) {
+        if ($('#scripttag').data('page') !== 'login' && $('#scripttag').data('page') !== 'createAccount') {
+            window.location.replace('login.html');
+        }
     }
 });
 
@@ -169,3 +176,59 @@ Date.prototype.addHours = function (h) {
     this.setTime(this.getTime() + h * 60 * 60 * 1000);
     return this;
 };
+
+function isLoggedIn() {
+    if (sessionStorage === null) {
+        return false;
+    } else {
+        const session = getLocalStorage('session');
+        const email = session.split(':')[0];
+        const password = session.split(':')[1];
+        let emailFound = false;
+        let emailI = 0;
+
+        for (let i = 0; i < getLocalStorage('accounts').length; i++) {
+            const acc = getLocalStorage('accounts')[i];
+            if (acc.email === atob(email)) {
+                emailFound = true;
+                emailI = i;
+                break;
+            }
+        }
+
+        if (emailFound) {
+            if (getLocalStorage('accounts')[emailI].password === password) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+}
+
+function getUserInfo(key) {
+    if (isLoggedIn()) {
+        const session = getLocalStorage('session');
+        const email = session.split(':')[0];
+        const password = session.split(':')[1];
+        let emailFound = false;
+        let emailI = 0;
+
+        for (let i = 0; i < getLocalStorage('accounts').length; i++) {
+            const acc = getLocalStorage('accounts')[i];
+            if (acc.email === atob(email)) {
+                emailFound = true;
+                emailI = i;
+                break;
+            }
+        }
+
+        if (emailFound) {
+            return getLocalStorage('accounts')[emailI][key];
+        } else {
+            return null;
+        }
+    }
+}
