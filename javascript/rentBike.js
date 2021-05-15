@@ -7,6 +7,7 @@ function setupRent() {
     let select = document.createElement('select');
 
     Object.keys(bikeTypes).forEach((key) => {
+        console.log(key);
         let option = document.createElement('option');
         let optionTxt = document.createTextNode(bikeTypes[key].title);
         option.setAttribute('value', key);
@@ -103,33 +104,50 @@ function rent(bike, price, time) {
     let timeamount = time.split(' ');
     if (timeamount.length == 2 && (timeamount[1] == 'Time' || timeamount[1] == 'Timer')) {
         const startDate = new Date();
-        startDate.setHours(startDate.getHours() + 2);
+        startDate.setHours(pickupTime.split(':')[0], pickupTime.split(':')[1], 00);
+
+        const endDate = new Date(startDate);
+        endDate.addHours(timeamount[0]);
+        console.log(endDate);
         setLocalStorage('activeRent', {
             start: pickupTime,
             startDate,
+            endDate: endDate,
             pickupTime,
             bike,
             price,
             location: currentLocation,
+            type: 'hour',
         });
+
         updateLocation();
+        confirm();
     } else if (timeamount.length == 2 && timeamount[1] == 'dag') {
-        startDate.setHours(pickupTime.split(':')[0]);
-        startDate.setMinutes(pickupTime.split(':')[1]);
-        setLocalStorage('activeRent', {
-            start: pickupTime,
-            startDate,
-            pickupTime,
-            bike,
-            price,
-            location: currentLocation,
-        });
-        updateLocation();
+        if (pickupTime.length < 1) {
+            alert('Ingen dato valgt');
+        } else {
+            date = pickupTime.split('-');
+            console.log(date);
+            const startDate = new Date(date).addHours(9);
+            const endDate = new Date(startDate).addHours(24);
+            setLocalStorage('activeRent', {
+                start: pickupTime,
+                startDate: startDate,
+                endDate: endDate,
+                pickupTime,
+                bike,
+                price,
+                location: currentLocation,
+                type: 'allDay',
+            });
+
+            updateLocation();
+            confirm();
+        }
     } else if (timeamount.length == 1) {
         const date = new Date();
         let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
         let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
-
         currentTime = hours + ':' + minutes;
         setLocalStorage('activeRent', {
             bike,
@@ -137,8 +155,11 @@ function rent(bike, price, time) {
             location: currentLocation,
             start: currentTime,
             startDate: date,
+            type: 'minutes',
         });
+
         updateLocation();
+        confirm();
     } else {
         console.error('Error');
     }
@@ -159,23 +180,27 @@ function modal(bike, price, time) {
     header.appendChild(headerTxt);
     container.appendChild(header);
 
+    let date = new Date().addHours(0.5);
+
+    let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+    let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+
+    currentTime = hours + ':' + minutes;
+
     if (timeamount.length == 2 && (timeamount[1] == 'Time' || timeamount[1] == 'Timer' || timeamount[1] == 'dag')) {
         let pickup = document.createElement('input');
         if (timeamount[1] == 'dag') {
             pickup.setAttribute('type', 'date');
+            const day = ('0' + (date.getDate() + 1)).slice(-2);
+            const month = ('0' + (date.getMonth() + 1)).slice(-2);
+            const dateString = date.getFullYear() + '-' + month + '-' + day;
+            pickup.setAttribute('value', dateString);
         } else {
             pickup.setAttribute('type', 'time');
+            pickup.setAttribute('value', currentTime);
         }
         pickup.setAttribute('name', 'selectTime');
         pickup.setAttribute('id', 'timeSelector');
-        let date = new Date().addHours(0.5);
-
-        let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
-        let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
-
-        currentTime = hours + ':' + minutes;
-
-        pickup.setAttribute('value', currentTime);
 
         let label = document.createElement('label');
         let labelTxt = document.createTextNode('Vælg afhentnings tidspunkt: ');
@@ -235,4 +260,14 @@ function updateLocation() {
     allLocations[currentLocation].availableBikes -= 1;
 
     setLocalStorage('allLocations', allLocations);
+}
+
+function confirm() {
+    document.getElementById('confirmModal').innerHTML = '';
+    let header = document.createElement('h3');
+    let headerTxt = document.createTextNode('Confirmed');
+    header.appendChild(headerTxt);
+
+    document.getElementById('confirmModal').appendChild(header);
+    location.href = 'index.html';
 }
