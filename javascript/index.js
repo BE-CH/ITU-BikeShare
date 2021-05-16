@@ -3,10 +3,10 @@ const currentDate = new Date();
 $('#firstnameLoggedIn').text(getUserInfo('firstname')); // set firstname
 
 function checkActiveRent() {
-    if (getLocalStorage('activeRent') != null && getLocalStorage('activeRent').active != false) {
-        console.log(getLocalStorage('activeRent'));
-        const activeRent = getLocalStorage('activeRent');
+    const userObject = getUserObject(getLocalStorage('session'));
+    const activeRent = userObject.activeRent;
 
+    if (activeRent != null && activeRent.active != false) {
         const startDate = new Date(activeRent.startDate);
         const endDate = new Date(activeRent.endDate);
 
@@ -46,7 +46,8 @@ function checkActiveRent() {
 }
 
 function stopRent() {
-    const activeRent = getLocalStorage('activeRent');
+    const userObject = getUserObject(getLocalStorage('session'));
+    const activeRent = userObject.activeRent;
 
     const startDate = new Date(activeRent.startDate);
     const endDate = new Date(activeRent.endDate);
@@ -57,7 +58,6 @@ function stopRent() {
         let secondsUsed = (currentDate.getTime() - startDate.getTime()) / 1000;
         let minutes = Math.ceil(secondsUsed / 60);
         price = minutes * activeRent.price;
-        //setLocalStorage('activeRent', { active: false });
     } else {
         let fine = 0;
         if (currentDate.getTime() > endDate.getTime()) {
@@ -67,6 +67,10 @@ function stopRent() {
     }
 
     alert('Samlet pris: ' + price + ' DKK');
-    setLocalStorage('activeRent', { active: false });
+
+    userObject.activeRent = { active: false };
+
+    updateLoggedInAccount(userObject);
+
     location.href = 'index.html';
 }

@@ -29,8 +29,6 @@ function updateUserInformation(firstname, lastname, email, phonenumber, password
         const userObject = getUserObject(getLocalStorage('session'));
         const originalEmail = userObject.email;
         const originalPassword = userObject.password;
-        console.log(emailAlreadyRegistered(email));
-        console.log(originalEmail, email);
 
         if (email.trim() === originalEmail.trim() || !emailAlreadyRegistered(email)) {
             userObject.firstname = firstname.trim();
@@ -39,33 +37,14 @@ function updateUserInformation(firstname, lastname, email, phonenumber, password
             userObject.phonenumber = phonenumber.trim();
             userObject.password = btoa(password);
 
-            const accounts = getLocalStorage('accounts');
-            let accI = 0;
-            let foundAcc = false;
+            updateLoggedInAccount(userObject);
 
-            for (let i = 0; i < accounts.length; i++) {
-                const acc = accounts[i];
-                if (acc.email === originalEmail) {
-                    accI = i;
-                    foundAcc = true;
-                    break;
-                }
-            }
-
-            if (foundAcc) {
-                accounts[accI] = userObject;
-
-                setLocalStorage('accounts', accounts);
-
-                if (userObject.email !== originalEmail || userObject.password !== originalPassword) {
-                    alert('Du har skiftet din email/password. Du skal logge ind igen!');
-                    localStorage.removeItem('session');
-                    window.location.replace('login.html');
-                } else {
-                    alert('Dine oplysninger er nu opdateret!');
-                }
+            if (userObject.email !== originalEmail || userObject.password !== originalPassword) {
+                alert('Du har skiftet din email/password. Du skal logge ind igen!');
+                localStorage.removeItem('session');
+                window.location.replace('login.html');
             } else {
-                alert('Vi kunne ikke finde den konto du prøvede at gemme!');
+                alert('Dine oplysninger er nu opdateret!');
             }
         } else {
             alert('Der er allerede en konto med denne email!');

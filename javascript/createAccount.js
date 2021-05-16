@@ -25,6 +25,7 @@ $('#createAccount').submit(function (event) {
                     last4digits: cardnumber.slice(-4),
                     expiredate,
                     cvc: btoa(cvc),
+                    activeRent: { active: false },
                 };
 
                 accounts.push(userData);

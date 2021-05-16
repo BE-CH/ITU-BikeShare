@@ -1,9 +1,8 @@
 const bikeTypesStorage = localStorage.getItem('bikeTypes');
 const allLocationsStorage = localStorage.getItem('allLocations');
 const allFaqsStorage = localStorage.getItem('allFaqs');
-const activeRentStorage = localStorage.getItem('activeRent');
 const accountsStorage = localStorage.getItem('accounts');
-const sessionStorage = localStorage.getItem('session');
+const sessionStorageOurs = localStorage.getItem('session');
 
 if (!isLoggedIn()) {
     if ($('#scripttag').data('page') !== 'login' && $('#scripttag').data('page') !== 'createAccount' && $('#scripttag').data('page') !== 'logout') {
@@ -18,10 +17,6 @@ if (isLoggedIn() && ($('#scripttag').data('page') === 'login' || $('#scripttag')
 $(document).ready(() => {
     if (allLocationsStorage === null) {
         localStorage.setItem('allLocations', JSON.stringify(allLocations));
-    }
-
-    if (activeRentStorage === null) {
-        localStorage.setItem('activeRent', JSON.stringify(activeRent));
     }
 
     if (accountsStorage === null) {
@@ -162,10 +157,6 @@ let allFaqs = [
     },
 ];
 
-let activeRent = {
-    active: false,
-};
-
 let accounts = [];
 
 function getLocalStorage(string) {
@@ -182,7 +173,7 @@ Date.prototype.addHours = function (h) {
 };
 
 function isLoggedIn() {
-    if (sessionStorage === null) {
+    if (sessionStorageOurs === null) {
         return false;
     } else {
         const sessionObject = getLocalStorage('session');
@@ -244,4 +235,26 @@ function emailAlreadyRegistered(email) {
     } else {
         return false;
     }
+}
+
+function updateLoggedInAccount(newUserObject) {
+    const accounts = getLocalStorage('accounts');
+    const sessionKey = getLocalStorage('session');
+    const userObject = getUserObject(sessionKey);
+
+    const foundAcc = false;
+    const foundAccI = 0;
+
+    for (let i = 0; i < accounts.length; i++) {
+        const acc = accounts[i];
+        if (acc.emil === userObject.email) {
+            foundAcc = true;
+            foundAccI = i;
+            break;
+        }
+    }
+
+    accounts[foundAccI] = newUserObject;
+
+    setLocalStorage('accounts', accounts);
 }

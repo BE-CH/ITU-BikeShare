@@ -108,8 +108,8 @@ function rent(bike, price, time) {
 
         const endDate = new Date(startDate);
         endDate.addHours(timeamount[0]);
-        console.log(endDate);
-        setLocalStorage('activeRent', {
+        const userObject = getUserObject(getLocalStorage('session'));
+        userObject.activeRent = {
             start: pickupTime,
             startDate,
             endDate: endDate,
@@ -118,7 +118,9 @@ function rent(bike, price, time) {
             price,
             location: currentLocation,
             type: 'hour',
-        });
+        };
+
+        updateLoggedInAccount(userObject);
 
         updateLocation();
         confirm();
@@ -127,10 +129,11 @@ function rent(bike, price, time) {
             alert('Ingen dato valgt');
         } else {
             date = pickupTime.split('-');
-            console.log(date);
             const startDate = new Date(date).addHours(9);
             const endDate = new Date(startDate).addHours(24);
-            setLocalStorage('activeRent', {
+
+            const userObject = getUserObject(getLocalStorage('session'));
+            userObject.activeRent = {
                 start: pickupTime,
                 startDate: startDate,
                 endDate: endDate,
@@ -139,7 +142,9 @@ function rent(bike, price, time) {
                 price,
                 location: currentLocation,
                 type: 'allDay',
-            });
+            };
+
+            updateLoggedInAccount(userObject);
 
             updateLocation();
             confirm();
@@ -149,14 +154,18 @@ function rent(bike, price, time) {
         let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
         let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
         currentTime = hours + ':' + minutes;
-        setLocalStorage('activeRent', {
+
+        const userObject = getUserObject(getLocalStorage('session'));
+        userObject.activeRent = {
             bike,
             price,
             location: currentLocation,
             start: currentTime,
             startDate: date,
             type: 'minutes',
-        });
+        };
+
+        updateLoggedInAccount(userObject);
 
         updateLocation();
         confirm();
