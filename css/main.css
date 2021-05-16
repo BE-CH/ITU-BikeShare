@@ -88,3 +88,8 @@ header {
     height: var(--logo-height);
     width: auto;
 }
+
+input:focus {
+    outline: none;
+    border: none;
+}
