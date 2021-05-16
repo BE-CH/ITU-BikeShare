@@ -12,7 +12,11 @@
 
 #top h1,
 #top h5 {
-    margin: 1vh;
+    margin: 1vh 0;
+}
+
+p {
+    margin: 2% 0%;
 }
 
 .custom-map-control-button {
@@ -74,7 +78,7 @@
     width: 70%;
     font-size: larger;
     box-shadow: 0px 4px 10px #2e2e2e8a;
-    margin-bottom: 2vh;
+    margin-bottom: 1vh;
 }
 
 #loader {

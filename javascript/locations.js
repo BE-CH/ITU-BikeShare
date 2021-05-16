@@ -146,6 +146,7 @@ function calcNearestLocation(pos) {
     }
     openShop(closestLocation);
     let distanceAway = document.createElement('p');
+    distanceAway.setAttribute('id', 'distanceAway');
     let distText = minDist < 1000 ? Math.round(minDist * 10) / 10 + ' meter væk' : Math.round((minDist / 1000) * 10) / 10 + ' km væk';
     let dist = document.createTextNode(distText);
     distanceAway.appendChild(dist);
