@@ -1,3 +1,5 @@
+let lat, long;
+
 function initMap() {
     // The location of Uluru
     const copenahgen = { lat: 55.71, lng: 12.57 };
@@ -5,6 +7,43 @@ function initMap() {
     const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
         center: copenahgen,
+    });
+
+    infoWindow = new google.maps.InfoWindow();
+
+    const locationButton = document.createElement('button');
+    locationButton.textContent = 'Find lokation';
+    locationButton.classList.add('custom-map-control-button');
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+    locationButton.addEventListener('click', () => {
+        // Try HTML5 geolocation.
+        loader(true);
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                    };
+                    loader(false);
+                    calcNearestLocation(pos);
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent('Du er her.');
+                    infoWindow.open(map);
+                    new google.maps.Marker({
+                        position: pos,
+                    });
+                    map.setCenter(pos);
+                    map.setZoom(12);
+                },
+                () => {
+                    handleLocationError(true, map.getCenter());
+                }
+            );
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, map.getCenter());
+        }
     });
 
     const markers = allLocations.map((location, i) => {
@@ -34,6 +73,12 @@ function initMap() {
     });
 }
 
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ? 'Fejl: Vi kan ikke finde din lokation.' : 'Fejl: Din browser giver ikke tilladelse til at finde lokation.');
+    infoWindow.open(map);
+}
+
 let shopIsOpen = false;
 function openShop(location) {
     let shopInfo = document.getElementById('shopInfo');
@@ -43,7 +88,7 @@ function openShop(location) {
     }
     $('#shopInfo').addClass('shopInfo');
 
-    let shop = allLocations[location];
+    let shop = getLocalStorage('allLocations')[location];
 
     let nameHeader = document.createElement('h5');
     let nameTxt = document.createTextNode(shop.name);
@@ -69,4 +114,47 @@ function openShop(location) {
     shopInfo.append(nameHeader, addressField, openingHours, bikesStored, button);
 
     shopIsOpen = true;
+}
+
+function loader(open) {
+    if (open) {
+        let image = document.createElement('img');
+        image.setAttribute('src', 'images/loader.gif');
+        image.setAttribute('id', 'loader');
+        document.getElementById('mapContainer').appendChild(image);
+    } else {
+        document.getElementById('loader').remove();
+    }
+}
+
+function calcNearestLocation(pos) {
+    const locations = getLocalStorage('allLocations');
+    let minDist = Number.POSITIVE_INFINITY;
+    let closestLocation = undefined;
+    for (let i = 0; i < locations.length; i++) {
+        if (haversine(pos, locations[i].coord) < minDist) {
+            closestLocation = i;
+            minDist = haversine(pos, locations[i].coord);
+        }
+    }
+    openShop(closestLocation);
+    let distanceAway = document.createElement('p');
+    let distText = minDist < 1000 ? Math.round(minDist * 10) / 10 + ' meter væk' : Math.round((minDist / 1000) * 10) / 10 + ' km væk';
+    let dist = document.createTextNode(distText);
+    distanceAway.appendChild(dist);
+    document.getElementById('shopInfo').appendChild(distanceAway);
+}
+
+function haversine(pos1, pos2) {
+    const R = 6371e3; // metres
+    const φ1 = (pos1.lat * Math.PI) / 180; // φ, λ in radians
+    const φ2 = (pos2.lat * Math.PI) / 180;
+    const Δφ = ((pos2.lat - pos1.lat) * Math.PI) / 180;
+    const Δλ = ((pos2.lng - pos1.lng) * Math.PI) / 180;
+
+    const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) + Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    const d = R * c; // in metres
+    return d;
 }

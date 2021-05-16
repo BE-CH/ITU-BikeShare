@@ -15,22 +15,24 @@
     margin: 1vh;
 }
 
-#top button {
+.custom-map-control-button {
     background-color: #201c35;
     outline: none;
     border: none;
     border-radius: 4px;
     color: white;
-    height: 35%;
-    width: 70%;
+    height: 10%;
+    margin-top: 1%;
+    width: 50%;
     font-size: larger;
     box-shadow: 0px 4px 10px #2e2e2e8a;
 }
 
 #mapContainer {
     margin-top: 1vh;
-    height: 35vh;
+    height: 45vh;
     width: 100vw;
+    position: relative;
 }
 
 #map {
@@ -68,4 +70,14 @@
     font-size: larger;
     box-shadow: 0px 4px 10px #2e2e2e8a;
     margin-bottom: 2vh;
+}
+
+#loader {
+    position: absolute;
+    z-index: 1;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 12px;
+    box-shadow: 2px 4px 4px rgb(189, 93, 93);
 }
