@@ -42,6 +42,11 @@
     border-radius: 8px;
 }
 
+.noBikes {
+    background-color: #ff0033 !important;
+    cursor: not-allowed;
+}
+
 .shopInfo {
     margin: 2vh 10vw;
     padding: 0.5vh 2vw;

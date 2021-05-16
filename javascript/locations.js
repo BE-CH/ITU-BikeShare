@@ -107,9 +107,16 @@ function openShop(location) {
     bikesStored.appendChild(bikes);
 
     let button = document.createElement('button');
-    button.setAttribute('onclick', `location.href='rentBike.html?location=${location}'`);
-    let butTxt = document.createTextNode('Gå til butik');
-    button.appendChild(butTxt);
+    if (shop.availableBikes > 0) {
+        button.setAttribute('onclick', `location.href='rentBike.html?location=${location}'`);
+        let butTxt = document.createTextNode('Gå til butik');
+        button.appendChild(butTxt);
+    } else {
+        button.setAttribute('disabled', 'true');
+        button.classList.add('noBikes');
+        let butTxt = document.createTextNode('Ingen ledige cykler. Vælg en anden shop.');
+        button.appendChild(butTxt);
+    }
 
     shopInfo.append(nameHeader, addressField, openingHours, bikesStored, button);
 

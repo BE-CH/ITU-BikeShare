@@ -103,51 +103,64 @@ function rent(bike, price, time) {
     } catch (e) {}
     let timeamount = time.split(' ');
     if (timeamount.length == 2 && (timeamount[1] == 'Time' || timeamount[1] == 'Timer')) {
-        const startDate = new Date();
-        startDate.setHours(pickupTime.split(':')[0], pickupTime.split(':')[1], 00);
+        if (pickupTime.length > 0) {
+            const startDate = new Date();
+            startDate.setHours(pickupTime.split(':')[0], pickupTime.split(':')[1], 00);
 
-        const endDate = new Date(startDate);
-        endDate.addHours(timeamount[0]);
-        const userObject = getUserObject(getLocalStorage('session'));
-        userObject.activeRent = {
-            start: pickupTime,
-            startDate,
-            endDate: endDate,
-            pickupTime,
-            bike,
-            price,
-            location: currentLocation,
-            type: 'hour',
-        };
+            if (startDate.getTime() >= new Date()) {
+                const endDate = new Date(startDate);
+                endDate.addHours(timeamount[0]);
+                const userObject = getUserObject(getLocalStorage('session'));
+                userObject.activeRent = {
+                    start: pickupTime,
+                    startDate,
+                    endDate: endDate,
+                    pickupTime,
+                    bike,
+                    price,
+                    location: currentLocation,
+                    type: 'hour',
+                };
 
-        updateLoggedInAccount(userObject);
+                updateLoggedInAccount(userObject);
 
-        updateLocation();
-        confirm();
+                updateLocation();
+                confirm();
+            } else {
+                alert('Du kan ikke vælge et tidspunkt i fortiden!');
+            }
+        } else {
+            alert('Intet tidspunkt valgt!');
+        }
     } else if (timeamount.length == 2 && timeamount[1] == 'dag') {
         if (pickupTime.length < 1) {
             alert('Ingen dato valgt');
         } else {
             date = pickupTime.split('-');
             const startDate = new Date(date).addHours(9);
-            const endDate = new Date(startDate).addHours(24);
 
-            const userObject = getUserObject(getLocalStorage('session'));
-            userObject.activeRent = {
-                start: pickupTime,
-                startDate: startDate,
-                endDate: endDate,
-                pickupTime,
-                bike,
-                price,
-                location: currentLocation,
-                type: 'allDay',
-            };
+            if (startDate.getTime() >= new Date()) {
+                const endDate = new Date(startDate).addHours(24);
 
-            updateLoggedInAccount(userObject);
+                const userObject = getUserObject(getLocalStorage('session'));
+                userObject.activeRent = {
+                    start: pickupTime,
+                    startDate: startDate,
+                    endDate: endDate,
+                    pickupTime,
+                    bike,
+                    price,
+                    location: currentLocation,
+                    type: 'allDay',
+                };
 
-            updateLocation();
-            confirm();
+                updateLoggedInAccount(userObject);
+
+                updateLocation();
+                confirm();
+            } else {
+                alert('Du kan ikke vælge et tidspunkt fra fortiden');
+            }
         }
     } else if (timeamount.length == 1) {
         const date = new Date();
