@@ -56,7 +56,7 @@ function stopRent() {
 
     if (activeRent.type == 'minutes') {
         let secondsUsed = (currentDate.getTime() - startDate.getTime()) / 1000;
-        let minutes = Math.ceil(secondsUsed / 60);
+        let minutes = Math.round((secondsUsed / 60) * 10) / 10;
         price = minutes * activeRent.price;
     } else {
         let fine = 0;
