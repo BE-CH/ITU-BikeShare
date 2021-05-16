@@ -41,47 +41,55 @@
     </div>
 
     <div class="myProfileContent">
-        <div class="myProfileTop">
-            <div class="myProfileInformation">
-                <div class="buttonContainer">
-                    <label for="firstname">Navn</label>
-                    <input type="text" name="firstname" id="firstname" placeholder="Dit fornavn" disabled>
-                </div>
-                <div class="buttonContainer">
-                    <label for="lastname">Efternavn</label>
-                    <input type="text" name="lastname" id="lastname" placeholder="Dit efternavn" disabled>
-                </div>
-                <div class="buttonContainer">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Din email">
-                </div>
-                <div class="buttonContainer">
-                    <label for="phonenumber">Telefonnummer</label>
-                    <input type="text" name="phonenumber" id="phonenumber" placeholder="Dit telefonnumer">
-                </div>
-                <div class="buttonContainer">
-                    <label for="password">Kodeord</label>
-                    <input type="password" name="password" id="password" placeholder="Din adgangskode">
-                </div>
+        <form method="post" id="saveMyAccountSettings">
+            <div class="myProfileTop">
+                <div class="myProfileInformation">
+                    <div class="buttonContainer">
+                        <label for="firstname">Navn</label>
+                        <input type="text" name="firstname" id="firstname" placeholder="Dit fornavn" disabled>
+                    </div>
+                    <div class="buttonContainer">
+                        <label for="lastname">Efternavn</label>
+                        <input type="text" name="lastname" id="lastname" placeholder="Dit efternavn" disabled>
+                    </div>
+                    <div class="buttonContainer">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Din email">
+                    </div>
+                    <div class="buttonContainer">
+                        <label for="phonenumber">Telefonnummer</label>
+                        <input type="text" name="phonenumber" id="phonenumber" placeholder="Dit telefonnumer">
+                    </div>
+                    <div class="buttonContainer">
+                        <label for="password">Nyt kodeord</label>
+                        <input type="password" name="password" id="password" placeholder="Din adgangskode">
+                    </div>
 
-            </div>
-            <div class="myProfileSavedCards">
-                <p class="cardTitle">Kortoplysninger</p>
-                <div class="connectedCard">
-                    <img src="images/visa.png" alt="visa">
-                    <p class="cardNumber">**** **** **** 4521</p>
-                    <p class="expireData">04/24</p>
+                </div>
+                <div class="myProfileSavedCards">
+                    <p class="cardTitle">Kortoplysninger</p>
+                    <div class="connectedCard">
+                        <img src="images/visa.png" alt="visa">
+                        <p class="cardNumber">**** **** **** <span id="last4"></span></p>
+                        <p class="expireData" id="expireDate"></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="myProfileBottom">
-            <div class="myProfileButtons">
-                <button class="saveSettings" type="submit">Gem oplysninger</button>
-                <a href="login.html"><button class="logoutButton">Log ud</button></a>
+            <div class="myProfileBottom">
+                <div class="myProfileButtons">
+                    <button class="saveSettings" type="submit">Gem oplysninger</button>
+                    <a href="login.html"><button class="logoutButton">Log ud</button></a>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 
 </body>
+
+<script src="javascript/jquery/jQuery3-6-0.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+
+<script src="javascript/main.js"></script>
+<script src="javascript/myProfile.js"></script>
 
 </html>

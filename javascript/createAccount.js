@@ -10,18 +10,9 @@ $('#createAccount').submit(function (event) {
     const cvc = $("input[name='cvc'").val();
 
     if (firstname && lastname && email && phonenumber && password && passwordAgain && cardnumber && expiredate && cvc) {
-        let alreadyRegistered = false;
         const accounts = getLocalStorage('accounts');
 
-        for (let i = 0; i < accounts.length; i++) {
-            const element = accounts[i];
-            if (element.email === email.toLowerCase().trim()) {
-                alreadyRegistered = true;
-                break;
-            }
-        }
-
-        if (!alreadyRegistered) {
+        if (!emailAlreadyRegistered(email.toLowerCase().trim())) {
             if (passwordAgain === password) {
                 const userData = {
                     email: email.toLowerCase().trim(),
@@ -45,7 +36,7 @@ $('#createAccount').submit(function (event) {
                 alert('Dine adgangskoder er ikke ens!');
             }
         } else {
-            alert('Du er allerede registeret! Log ind!');
+            alert('Der er allerede en konto med denne email. Log ind i stedet!');
             window.location.replace('login.html');
         }
     } else {

@@ -5,6 +5,16 @@ const activeRentStorage = localStorage.getItem('activeRent');
 const accountsStorage = localStorage.getItem('accounts');
 const sessionStorage = localStorage.getItem('session');
 
+if (!isLoggedIn()) {
+    if ($('#scripttag').data('page') !== 'login' && $('#scripttag').data('page') !== 'createAccount' && $('#scripttag').data('page') !== 'logout') {
+        window.location.replace('login.html');
+    }
+}
+
+if (isLoggedIn() && ($('#scripttag').data('page') === 'login' || $('#scripttag').data('page') === 'createAccount')) {
+    window.location.replace('myProfile.html');
+}
+
 $(document).ready(() => {
     if (allLocationsStorage === null) {
         localStorage.setItem('allLocations', JSON.stringify(allLocations));
@@ -16,12 +26,6 @@ $(document).ready(() => {
 
     if (accountsStorage === null) {
         localStorage.setItem('accounts', JSON.stringify(accounts));
-    }
-
-    if (!isLoggedIn()) {
-        if ($('#scripttag').data('page') !== 'login' && $('#scripttag').data('page') !== 'createAccount') {
-            window.location.replace('login.html');
-        }
     }
 });
 
@@ -131,8 +135,7 @@ let allFaqs = [
             },
             {
                 question: 'Hvordan lejer jeg en cykel?',
-                answer:
-                    'Hent BikeShare-appen, eller brug vores webside. Opret en konto og tilføj de relevante oplysninger samt et betalingskort, så er du klar til at køre. Du kan finde cykler tæt på dig og priser under “Lej en cykel”',
+                answer: 'Hent BikeShare-appen, eller brug vores webside. Opret en konto og tilføj de relevante oplysninger samt et betalingskort, så er du klar til at køre. Du kan finde cykler tæt på dig og priser under “Lej en cykel”',
                 id: 3,
             },
         ],
@@ -142,20 +145,17 @@ let allFaqs = [
         faqs: [
             {
                 question: 'Hvem kan passe cyklerne?',
-                answer:
-                    'Alle cyklerne passer til personer, der måler ca. 155 cm eller mere. Tilpas sadlen ved at bruge håndtaget under sadlen. Cyklerne passer ikke til børn, og der er ikke mulighed for børnesæder.',
+                answer: 'Alle cyklerne passer til personer, der måler ca. 155 cm eller mere. Tilpas sadlen ved at bruge håndtaget under sadlen. Cyklerne passer ikke til børn, og der er ikke mulighed for børnesæder.',
                 id: 4,
             },
             {
                 question: 'Er alle cyklerne forsikret?',
-                answer:
-                    'Ja. Alle BikeShare cykler er dækket af tredjeparts forsikring selskaber og du vil blot skulle betale en selvrisiko i tilfælde af der skulle ske et uheld. Denne pris reduceres automatisk til et specifikt beløb afhængig af ulykken. ',
+                answer: 'Ja. Alle BikeShare cykler er dækket af tredjeparts forsikring selskaber og du vil blot skulle betale en selvrisiko i tilfælde af der skulle ske et uheld. Denne pris reduceres automatisk til et specifikt beløb afhængig af ulykken. ',
                 id: 5,
             },
             {
                 question: 'Hvor hurtigt kan en el-cykel kører?',
-                answer:
-                    'Bycyklerne har en elmotor, der assisterer dig op til 23 km/t og ladcyklen op til 15 km/t. Motoren giver kun assistance, når du træder pedalerne rundt. Når du bruger bremserne, slår motoren automatisk fra.',
+                answer: 'Bycyklerne har en elmotor, der assisterer dig op til 23 km/t og ladcyklen op til 15 km/t. Motoren giver kun assistance, når du træder pedalerne rundt. Når du bruger bremserne, slår motoren automatisk fra.',
                 id: 6,
             },
         ],
@@ -185,23 +185,12 @@ function isLoggedIn() {
     if (sessionStorage === null) {
         return false;
     } else {
-        const session = getLocalStorage('session');
-        const email = session.split(':')[0];
-        const password = session.split(':')[1];
-        let emailFound = false;
-        let emailI = 0;
+        const sessionObject = getLocalStorage('session');
+        const password = sessionObject.split(':')[1];
+        const userObject = getUserObject(getLocalStorage('session'));
 
-        for (let i = 0; i < getLocalStorage('accounts').length; i++) {
-            const acc = getLocalStorage('accounts')[i];
-            if (acc.email === atob(email)) {
-                emailFound = true;
-                emailI = i;
-                break;
-            }
-        }
-
-        if (emailFound) {
-            if (getLocalStorage('accounts')[emailI].password === password) {
+        if (userObject) {
+            if (userObject.password === password) {
                 return true;
             } else {
                 return false;
@@ -214,25 +203,45 @@ function isLoggedIn() {
 
 function getUserInfo(key) {
     if (isLoggedIn()) {
-        const session = getLocalStorage('session');
-        const email = session.split(':')[0];
-        const password = session.split(':')[1];
-        let emailFound = false;
-        let emailI = 0;
+        return getUserObject(getLocalStorage('session'))[key];
+    }
+}
 
-        for (let i = 0; i < getLocalStorage('accounts').length; i++) {
-            const acc = getLocalStorage('accounts')[i];
-            if (acc.email === atob(email)) {
-                emailFound = true;
-                emailI = i;
-                break;
-            }
-        }
+function getUserObject(sessionString) {
+    const email = sessionString.split(':')[0];
+    let emailFound = false;
+    let emailI = 0;
 
-        if (emailFound) {
-            return getLocalStorage('accounts')[emailI][key];
-        } else {
-            return null;
+    for (let i = 0; i < getLocalStorage('accounts').length; i++) {
+        const acc = getLocalStorage('accounts')[i];
+        if (acc.email === atob(email)) {
+            emailFound = true;
+            emailI = i;
+            break;
         }
+    }
+
+    if (emailFound) {
+        return getLocalStorage('accounts')[emailI];
+    } else {
+        return null;
+    }
+}
+
+function emailAlreadyRegistered(email) {
+    const accounts = getLocalStorage('accounts');
+    let found = false;
+    for (let i = 0; i < accounts.length; i++) {
+        const acc = accounts[i];
+        if (acc.email === email.trim()) {
+            found = true;
+            break;
+        }
+    }
+
+    if (found) {
+        return true;
+    } else {
+        return false;
     }
 }
