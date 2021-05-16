@@ -149,7 +149,7 @@ let allFaqs = [
                 id: 5,
             },
             {
-                question: 'Hvor hurtigt kan en el-cykel kører?',
+                question: 'Hvor hurtigt kan en el-cykel køre?',
                 answer: 'Bycyklerne har en elmotor, der assisterer dig op til 23 km/t og ladcyklen op til 15 km/t. Motoren giver kun assistance, når du træder pedalerne rundt. Når du bruger bremserne, slår motoren automatisk fra.',
                 id: 6,
             },
