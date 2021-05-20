@@ -1,5 +1,5 @@
-# BikeShare 2021 - Eksamensprojekt
-## ITU ( Systematisk design af brugergrænseflader )
+# BikeShare - ITU Exam project 2021
+### Course: Systematisk design af brugergrænseflader
 
 A small static bike rental service *prototype* written in HTML, CSS and Javascript. This repository has been used for the exam.
 The code is very basic and have been written in around 3 hours.
