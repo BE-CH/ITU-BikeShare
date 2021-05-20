@@ -1,11 +1,13 @@
-# Systematisk design af brugergrænseflader - BikeShare 2021 - Eksamensprojekt
+# BikeShare 2021 - Eksamensprojekt
+## ITU ( Systematisk design af brugergrænseflader )
 
-En cykeludlejningsservice skrevet i HTML, CSS og Javascript. 
+A small static bike rental service *prototype* written in HTML, CSS and Javascript. This repository has been used for the exam.
+The code is very basic and have been written in around 3 hours.
 
 Demo: https://romantic-brattain-793e32.netlify.app/
 
 
-### Kom i gang
-1. Opret en bruger.
-2. Lej en cykel.
-3. Aflever og betal.
+### How to use
+1. Create an account.
+2. Rent a bike.
+3. Enjoy and pay when done!
