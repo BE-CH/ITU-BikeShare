@@ -5,7 +5,7 @@
 A small static bike rental service *prototype* written in HTML, CSS and Javascript. This repository has been used for the exam.
 The code is very basic and have been written in around 3 hours.
 
-Demo: https://romantic-brattain-793e32.netlify.app/
+Demo: https://itu-bike-share-ajt7tx6ke-bech.vercel.app/login.html
 
 
 ### How to use
