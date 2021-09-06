@@ -7,6 +7,8 @@ The code is very basic and have been written in around 3 hours.
 
 Demo: https://itu-bike-share-ajt7tx6ke-bech.vercel.app/login.html
 
+![Preview](https://github.com/BE-CH/ITU-BikeShare/blob/master/Preview.png?raw=true)
+
 
 ### How to use
 1. Create an account.
